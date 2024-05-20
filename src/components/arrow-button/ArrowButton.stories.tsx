@@ -14,9 +14,7 @@ export const ArrowButtonStory: Story = {
 		return (
 			<>
 				<ArrowButton
-					toggleButton={() => {
-						console.log('Чтобы ошибки не было)');
-					}}
+					toggleButton={() => console.log('Click-clack')}
 					isOpen={false}
 				/>
 			</>
