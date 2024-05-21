@@ -33,17 +33,17 @@ export const ArticleParamsForm = ({
 }: ArticleParamsFormProps) => {
 	const [formState, setFormState] = useState(articleState);
 
-	const [sideBarOpen, isSideBarOpen] = useState(false);
+	const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
 	const toggleSideBar = () => {
-		isSideBarOpen(!sideBarOpen);
+		setIsSideBarOpen(!isSideBarOpen);
 	};
 
 	const sideBarRef = useRef<HTMLElement | null>(null);
 
 	useClose({
-		isOpen: sideBarOpen,
-		onClose: () => isSideBarOpen(false),
+		isOpen: isSideBarOpen,
+		onClose: () => setIsSideBarOpen(false),
 		rootRef: sideBarRef,
 	});
 
@@ -67,12 +67,12 @@ export const ArticleParamsForm = ({
 
 	return (
 		<>
-			<ArrowButton toggleButton={toggleSideBar} isOpen={false} />
+			<ArrowButton toggleButton={toggleSideBar} isOpen={isSideBarOpen} />
 			<aside
 				ref={sideBarRef}
 				className={clsx(
 					styles.container,
-					sideBarOpen && styles.container_open
+					isSideBarOpen && styles.container_open
 				)}>
 				<form className={styles.form} onSubmit={handleConfirm}>
 					<Text size={31} uppercase={true} weight={800} align='left' as={'h2'}>
